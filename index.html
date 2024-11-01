@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Screen Flash Game</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    <style>
+        /* Reset margin and padding */
+        /** * {
+            margin: 0;
+            padding: 0;
+            /* box-sizing: border-box; 
+        } */
+
+        /* Body and HTML take up the full viewport */
+        body, html {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333; /* Dark background for debugging */
+        }
+
+        /* Flex container that fills the screen */
+        #flash-game-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffcc00; /* Yellow background for debugging */
+        }
+
+        /* Canvas styling to fill the container */
+        canvas {
+            width: 100%;
+            height: 100%;
+            background-color: #4CAF50; /* Green background for debugging */
+        }
+    </style>
+</head>
+<body>
+    <div id="container"> </div>
+
+<script src="ruffle/ruffle.js"></script>
+    <script>
+        window.RufflePlayer = window.RufflePlayer || {};
+        window.addEventListener("load", (event) => {
+            const ruffle = window.RufflePlayer.newest();
+            const player = ruffle.createPlayer();
+            const container = document.getElementById("container"); 
+            container.appendChild(player);
+            player.load({
+                url: "main.swf", 
+                backgroundColor: "#000", 
+             });
+            player.style.width = "1200px"; 
+            player.style.height = "720px";
+        });
+    </script>
+
+</body>
+</html>
